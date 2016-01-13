@@ -8,6 +8,12 @@ import br.com.hoteisbh.model.Reserva;
 import br.com.hoteisbh.model.TipoHospede;
 import br.com.hoteisbh.util.Utils;
 
+/**
+ * Classe controladora utilizado para gerenciar as ações vinculadas as reservas
+ * 
+ * @author Rafael
+ *
+ */
 public class ReservaController {
 	/**
 	 * Metodo que recebe uma entrada de texto referente aos parametros de

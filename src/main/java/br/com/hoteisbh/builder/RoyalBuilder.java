@@ -3,7 +3,7 @@ package br.com.hoteisbh.builder;
 import br.com.hoteisbh.model.PrecoHotel;
 
 /**
- * Classe concreta do Hotel Builder apra montar os dados doHotel The Royal
+ * Classe concreta do Hotel Builder para montar os dados doH otel The Royal
  * 
  * @author Rafael
  *

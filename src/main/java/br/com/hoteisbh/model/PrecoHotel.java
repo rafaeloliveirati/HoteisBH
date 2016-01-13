@@ -6,6 +6,14 @@ public class PrecoHotel {
 	private float precoVipSemana;
 	private float precoVipFds;
 
+	/**
+	 * Construtor utilizado para receber os valos dos precos da reserva
+	 * 
+	 * @param precoRegularSemana
+	 * @param precoRegularFds
+	 * @param precoVipSemana
+	 * @param precoVipFds
+	 */
 	public PrecoHotel(float precoRegularSemana, float precoRegularFds, float precoVipSemana, float precoVipFds) {
 		this.precoRegularSemana = precoRegularSemana;
 		this.precoRegularFds = precoRegularFds;

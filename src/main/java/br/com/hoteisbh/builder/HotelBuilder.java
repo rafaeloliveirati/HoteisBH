@@ -15,6 +15,9 @@ public abstract class HotelBuilder {
 		return hotel;
 	}
 
+	/**
+	 * Metodo invocado para criar uma nova instancia de hotel
+	 */
 	public void createNewHotel() {
 		hotel = new Hotel();
 	}

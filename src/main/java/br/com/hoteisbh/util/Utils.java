@@ -8,6 +8,8 @@ import java.util.GregorianCalendar;
 
 public class Utils {
 	/**
+	 * Metodo para formatar a data com base na string digitada na entrada. Esta
+	 * entrada hoje tem a seguinte estrutura {ddMMMyyyy}
 	 * 
 	 * @param data
 	 * @return
@@ -25,6 +27,7 @@ public class Utils {
 	}
 
 	/**
+	 * Metodo que recebe uma data e retorna se a mesma é um dia da semana ou não
 	 * 
 	 * @param data
 	 * @return

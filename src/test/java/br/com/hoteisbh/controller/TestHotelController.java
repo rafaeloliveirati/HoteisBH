@@ -24,19 +24,23 @@ public class TestHotelController extends TestCase {
 	 */
 	@Test
 	public void testVerificaMelhorHotel() {
-		String entrada1 = "Regular: 16Mar2015(seg), 17Mar2015(ter), 18Mar2015(qua)";
-		String entrada2 = "Regular: 16Mar2015(seg), 17Mar2015(ter), 18Mar2015(qua)";
-		String entrada3 = "Regular: 16Mar2015(seg), 17Mar2015(ter),	18Mar2015(qua)";
+		// String entrada1 = "Regular: 16Mar2015(seg), 17Mar2015(ter),
+		// 18Mar2015(qua)";
+		String entrada2 = "Regular: 20Mar2015(sex), 21Mar2015(sab), 22Mar2015(dom)";
+		// String entrada3 = "Regular: 16Mar2015(seg), 17Mar2015(ter),
+		// 18Mar2015(qua)";
 		List<Hotel> hotel = HotelController.buildListaHoteis();
-		Reserva reserva1 = ReservaController.builderReserva(entrada1);
+		// Reserva reserva1 = ReservaController.builderReserva(entrada1);
 		Reserva reserva2 = ReservaController.builderReserva(entrada2);
-		Reserva reserva3 = ReservaController.builderReserva(entrada3);
-		String retornoEsperado1 = "The Carlyle: R$330";
+		// Reserva reserva3 = ReservaController.builderReserva(entrada3);
+		// String retornoEsperado1 = "The Carlyle: R$330";
 		String retornoEsperado2 = "The Plaza: R$280";
-		String retornoEsperado3 = "Royal Hotel: R$240";
-		assertEquals(retornoEsperado1, HotelController.verificaMelhorHotel(reserva1, hotel));
+		// String retornoEsperado3 = "Royal Hotel: R$240";
+		// assertEquals(retornoEsperado1,
+		// HotelController.verificaMelhorHotel(reserva1, hotel));
 		assertEquals(retornoEsperado2, HotelController.verificaMelhorHotel(reserva2, hotel));
-		assertEquals(retornoEsperado3, HotelController.verificaMelhorHotel(reserva3, hotel));
+		// assertEquals(retornoEsperado3,
+		// HotelController.verificaMelhorHotel(reserva3, hotel));
 	}
 
 	@Test

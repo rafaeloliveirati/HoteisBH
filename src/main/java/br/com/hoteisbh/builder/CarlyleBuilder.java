@@ -3,7 +3,7 @@ package br.com.hoteisbh.builder;
 import br.com.hoteisbh.model.PrecoHotel;
 
 /**
- * Classe concreta do Hotel Builder apra montar os dados doHotel The Carlyle
+ * Classe concreta do Hotel Builder para montar os dados do Hotel The Carlyle
  * 
  * @author Rafael
  *
@@ -22,6 +22,6 @@ public class CarlyleBuilder extends HotelBuilder {
 
 	@Override
 	public void buildPreco() {
-		hotel.setPreco(new PrecoHotel(110, 80, 90, 80));
+		hotel.setPreco(new PrecoHotel(110, 90, 80, 80));
 	}
 }
