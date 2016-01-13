@@ -1,47 +1,47 @@
 package br.com.hoteisbh.model;
 
 public class PrecoHotel {
-	private Double precoRegularSemana;
-	private Double precoRegularFds;
-	private Double precoVipSemana;
-	private Double precoVipFds;
+	private float precoRegularSemana;
+	private float precoRegularFds;
+	private float precoVipSemana;
+	private float precoVipFds;
 
-	public PrecoHotel(Double precoRegularSemana, Double precoRegularFds, Double precoVipSemana, Double precoVipFds) {
+	public PrecoHotel(float precoRegularSemana, float precoRegularFds, float precoVipSemana, float precoVipFds) {
 		this.precoRegularSemana = precoRegularSemana;
 		this.precoRegularFds = precoRegularFds;
 		this.precoVipSemana = precoVipSemana;
 		this.precoVipFds = precoVipFds;
 	}
 
-	public Double getPrecoRegularSemana() {
+	public float getPrecoRegularSemana() {
 		return precoRegularSemana;
 	}
 
-	public void setPrecoRegularSemana(Double precoRegularSemana) {
+	public void setPrecoRegularSemana(float precoRegularSemana) {
 		this.precoRegularSemana = precoRegularSemana;
 	}
 
-	public Double getPrecoRegularFds() {
+	public float getPrecoRegularFds() {
 		return precoRegularFds;
 	}
 
-	public void setPrecoRegularFds(Double precoRegularFds) {
+	public void setPrecoRegularFds(float precoRegularFds) {
 		this.precoRegularFds = precoRegularFds;
 	}
 
-	public Double getPrecoVipSemana() {
+	public float getPrecoVipSemana() {
 		return precoVipSemana;
 	}
 
-	public void setPrecoVipSemana(Double precoVipSemana) {
+	public void setPrecoVipSemana(float precoVipSemana) {
 		this.precoVipSemana = precoVipSemana;
 	}
 
-	public Double getPrecoVipFds() {
+	public float getPrecoVipFds() {
 		return precoVipFds;
 	}
 
-	public void setPrecoVipFds(Double precoVipFds) {
+	public void setPrecoVipFds(float precoVipFds) {
 		this.precoVipFds = precoVipFds;
 	}
 }

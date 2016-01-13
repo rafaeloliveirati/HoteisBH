@@ -22,6 +22,6 @@ public class RoyalBuilder extends HotelBuilder {
 
 	@Override
 	public void buildPreco() {
-		hotel.setPreco(new PrecoHotel((double) 110, (double) 80, (double) 90, (double) 80));
+		hotel.setPreco(new PrecoHotel(110, 80, 90, 80));
 	}
 }

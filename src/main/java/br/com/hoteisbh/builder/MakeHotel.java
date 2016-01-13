@@ -2,7 +2,7 @@ package br.com.hoteisbh.builder;
 
 import br.com.hoteisbh.model.Hotel;
 
-public class Director {
+public class MakeHotel {
 	private HotelBuilder hotelBuilder;
 
 	public void setHotelBuilder(HotelBuilder pb) {

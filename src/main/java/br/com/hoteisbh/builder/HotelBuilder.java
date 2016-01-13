@@ -8,7 +8,7 @@ import br.com.hoteisbh.model.Hotel;
  * @author Rafael
  *
  */
-abstract class HotelBuilder {
+public abstract class HotelBuilder {
 	protected Hotel hotel;
 
 	public Hotel getHotel() {
