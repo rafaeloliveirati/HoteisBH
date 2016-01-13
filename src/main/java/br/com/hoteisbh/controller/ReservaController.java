@@ -1,7 +1,6 @@
 package br.com.hoteisbh.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.com.hoteisbh.builder.CarlyleBuilder;
@@ -9,8 +8,9 @@ import br.com.hoteisbh.builder.HotelBuilder;
 import br.com.hoteisbh.builder.MakeHotel;
 import br.com.hoteisbh.builder.PlazaBuilder;
 import br.com.hoteisbh.builder.RoyalBuilder;
-import br.com.hoteisbh.model.Reserva;
+import br.com.hoteisbh.model.DiariaReserva;
 import br.com.hoteisbh.model.Hotel;
+import br.com.hoteisbh.model.Reserva;
 import br.com.hoteisbh.model.TipoHospede;
 import br.com.hoteisbh.util.Utils;
 
@@ -27,12 +27,12 @@ public class ReservaController {
 		 * Cria um array com o tamanho da quantidade de parametros, com exceção
 		 * do primeiro parametro(TipoParametro)
 		 */
-		Date[] datasSolicitadas = new Date[parametros.length - 1];
 		String strTipoHostpede = parametros[0];
+		List<DiariaReserva> listDiarias = new ArrayList<>();
 		for (int i = 1; i < parametros.length; i++) {
-			datasSolicitadas[i - 1] = Utils.formataData(parametros[i].replaceAll("\\(.+?\\)", ""));
+			listDiarias.add(new DiariaReserva(Utils.formataData(parametros[i].replaceAll("\\(.+?\\)", ""))));
 		}
-		return new Reserva(TipoHospede.get(strTipoHostpede), datasSolicitadas);
+		return new Reserva(TipoHospede.get(strTipoHostpede), listDiarias);
 	}
 
 	/**

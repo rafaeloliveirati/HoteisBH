@@ -9,14 +9,20 @@ public enum TipoHospede {
 	 * Tipo vip
 	 */
 	HOSPEDE_VIP("Vip");
+	String valor;
 
-	TipoHospede(String valueOption) {
+	TipoHospede(String valorOpcao) {
+		valor = valorOpcao;
+	}
+
+	public String getValor() {
+		return valor;
 	}
 
 	public static TipoHospede get(String tipoCampo) {
 		TipoHospede[] tipos = TipoHospede.values();
 		for (TipoHospede tipo : tipos) {
-			if (tipo.toString().equals(tipoCampo)) {
+			if (tipo.getValor().equals(tipoCampo)) {
 				return tipo;
 			}
 		}

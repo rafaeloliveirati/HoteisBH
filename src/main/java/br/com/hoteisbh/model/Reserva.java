@@ -1,10 +1,15 @@
 package br.com.hoteisbh.model;
 
-import java.util.Date;
+import java.util.List;
 
 public class Reserva {
 	private TipoHospede tipo;
-	private Date[] datas;
+	private List<DiariaReserva> diaria;
+
+	public Reserva(TipoHospede tipo, List<DiariaReserva> listDiarias) {
+		this.tipo = tipo;
+		this.diaria = listDiarias;
+	}
 
 	public TipoHospede getTipo() {
 		return tipo;
@@ -14,16 +19,11 @@ public class Reserva {
 		this.tipo = tipo;
 	}
 
-	public Date[] getDatasReserva() {
-		return datas;
+	public List<DiariaReserva> getDiaria() {
+		return diaria;
 	}
 
-	public void setDatasReserva(Date[] datasReserva) {
-		this.datas = datasReserva;
-	}
-
-	public Reserva(TipoHospede tipo, Date... data) {
-		this.tipo = tipo;
-		datas = data;
+	public void setDiaria(List<DiariaReserva> diaria) {
+		this.diaria = diaria;
 	}
 }
