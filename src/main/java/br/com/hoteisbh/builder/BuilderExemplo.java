@@ -12,7 +12,7 @@ public class BuilderExemplo {
 	private static Scanner sc;
 
 	public static void main(String[] args) {
-		List<Hotel> hoteis = ReservaController.buildListaHoteis();
+		List<Hotel> hoteis = HotelController.buildListaHoteis();
 		System.out.println("Bem vindo ao sistema Hoteis BH");
 		sc = new Scanner(System.in);
 		// String entrada = "Regular: 16Mar2015(seg), 17Mar2015(ter),

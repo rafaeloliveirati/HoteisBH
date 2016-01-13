@@ -3,13 +3,7 @@ package br.com.hoteisbh.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.hoteisbh.builder.CarlyleBuilder;
-import br.com.hoteisbh.builder.HotelBuilder;
-import br.com.hoteisbh.builder.MakeHotel;
-import br.com.hoteisbh.builder.PlazaBuilder;
-import br.com.hoteisbh.builder.RoyalBuilder;
 import br.com.hoteisbh.model.DiariaReserva;
-import br.com.hoteisbh.model.Hotel;
 import br.com.hoteisbh.model.Reserva;
 import br.com.hoteisbh.model.TipoHospede;
 import br.com.hoteisbh.util.Utils;
@@ -48,31 +42,4 @@ public class ReservaController {
 		 */
 		return entrada.split("\\,|\\:");
 	}
-
-	/**
-	 * Constroi a lista de hoteis acionando o buildHotel
-	 * 
-	 * @return
-	 */
-	public static List<Hotel> buildListaHoteis() {
-		List<Hotel> hoteis = new ArrayList<>();
-		hoteis.add(buildHotel(new PlazaBuilder()));
-		hoteis.add(buildHotel(new RoyalBuilder()));
-		hoteis.add(buildHotel(new CarlyleBuilder()));
-		return hoteis;
-	}
-
-	/**
-	 * Constroi o hotel e o retorna a partir de um builder
-	 * 
-	 * @param hotelBuilder
-	 * @return
-	 */
-	private static Hotel buildHotel(HotelBuilder hotelBuilder) {
-		MakeHotel make = new MakeHotel();
-		make.setHotelBuilder(hotelBuilder);
-		make.constructHotel();
-		return make.getHotel();
-	}
-
 }

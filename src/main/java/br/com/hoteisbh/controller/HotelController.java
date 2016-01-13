@@ -1,8 +1,14 @@
 package br.com.hoteisbh.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import br.com.hoteisbh.builder.CarlyleBuilder;
+import br.com.hoteisbh.builder.HotelBuilder;
+import br.com.hoteisbh.builder.MakeHotel;
+import br.com.hoteisbh.builder.PlazaBuilder;
+import br.com.hoteisbh.builder.RoyalBuilder;
 import br.com.hoteisbh.model.DiariaReserva;
 import br.com.hoteisbh.model.Hotel;
 import br.com.hoteisbh.model.Reserva;
@@ -16,7 +22,6 @@ public class HotelController {
 		float valorMelhorHotel = 0;
 		for (Hotel hotel : hoteis) {
 			float valorTotal = getValorTotal(getValoresReserva(reserva, hotel));
-			System.out.println(valorTotal);
 			if (melhorHotel == null) {
 				melhorHotel = hotel;
 				valorMelhorHotel = valorTotal;
@@ -27,7 +32,7 @@ public class HotelController {
 				}
 			}
 		}
-		return melhorHotel.getNome() + " - Valor: " + valorMelhorHotel;
+		return melhorHotel.getNome() + ": R$" + valorMelhorHotel;
 	}
 
 	private static float getValorTotal(Reserva reserva) {
@@ -63,5 +68,31 @@ public class HotelController {
 			}
 		}
 		return 0;
+	}
+
+	/**
+	 * Constroi o hotel e o retorna a partir de um builder
+	 * 
+	 * @param hotelBuilder
+	 * @return
+	 */
+	public static Hotel buildHotel(HotelBuilder hotelBuilder) {
+		MakeHotel make = new MakeHotel();
+		make.setHotelBuilder(hotelBuilder);
+		make.constructHotel();
+		return make.getHotel();
+	}
+
+	/**
+	 * Constroi a lista de hoteis acionando o buildHotel
+	 * 
+	 * @return
+	 */
+	public static List<Hotel> buildListaHoteis() {
+		List<Hotel> hoteis = new ArrayList<>();
+		hoteis.add(buildHotel(new PlazaBuilder()));
+		hoteis.add(buildHotel(new RoyalBuilder()));
+		hoteis.add(buildHotel(new CarlyleBuilder()));
+		return hoteis;
 	}
 }

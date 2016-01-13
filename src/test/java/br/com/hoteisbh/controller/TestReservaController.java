@@ -1,10 +1,10 @@
 package br.com.hoteisbh.controller;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-public class TesteReservaController {
+import junit.framework.TestCase;
+
+public class TestReservaController extends TestCase {
 
 	@Test
 	public void testBuilderReserva() {
