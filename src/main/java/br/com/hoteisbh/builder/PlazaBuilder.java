@@ -22,6 +22,6 @@ public class PlazaBuilder extends HotelBuilder {
 
 	@Override
 	public void buildPreco() {
-		hotel.setPreco(new PrecoHotel(110, 80, 90, 80));
+		hotel.setPreco(new PrecoHotel(160, 110, 60, 50));
 	}
 }

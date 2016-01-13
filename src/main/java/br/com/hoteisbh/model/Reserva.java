@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Reserva {
 	private TipoHospede tipo;
-	private List<DiariaReserva> diaria;
+	private List<DiariaReserva> diarias;
 
 	public Reserva(TipoHospede tipo, List<DiariaReserva> listDiarias) {
 		this.tipo = tipo;
-		this.diaria = listDiarias;
+		this.diarias = listDiarias;
 	}
 
 	public TipoHospede getTipo() {
@@ -19,11 +19,11 @@ public class Reserva {
 		this.tipo = tipo;
 	}
 
-	public List<DiariaReserva> getDiaria() {
-		return diaria;
+	public List<DiariaReserva> getDiarias() {
+		return diarias;
 	}
 
-	public void setDiaria(List<DiariaReserva> diaria) {
-		this.diaria = diaria;
+	public void setDiarias(List<DiariaReserva> diaria) {
+		this.diarias = diaria;
 	}
 }

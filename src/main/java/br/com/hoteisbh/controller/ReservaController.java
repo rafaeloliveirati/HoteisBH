@@ -22,7 +22,7 @@ public class ReservaController {
 	 * @param entrada
 	 */
 	public static Reserva builderReserva(String entrada) {
-		String[] parametros = formataEntrada(entrada);
+		String[] parametros = formataEntrada(entrada.trim());
 		/*
 		 * Cria um array com o tamanho da quantidade de parametros, com exceção
 		 * do primeiro parametro(TipoParametro)
