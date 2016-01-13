@@ -69,10 +69,10 @@ public class ReservaController {
 	 * @return
 	 */
 	private static Hotel buildHotel(HotelBuilder hotelBuilder) {
-		MakeHotel director = new MakeHotel();
-		director.setHotelBuilder(hotelBuilder);
-		director.constructHotel();
-		return director.getHotel();
+		MakeHotel make = new MakeHotel();
+		make.setHotelBuilder(hotelBuilder);
+		make.constructHotel();
+		return make.getHotel();
 	}
 
 }

@@ -11,26 +11,6 @@ public class Hotel {
 	private int classificacao;
 	private PrecoHotel preco;
 
-	/**
-	 * Construtor utilizado para copular as informa��es pr� definidas dos hoteis
-	 * existentes
-	 * 
-	 * @param nome
-	 * @param classificacao
-	 * @param precoRegularSemana
-	 * @param precoRegularFds
-	 * @param precoVipSemana
-	 * @param precoVipFds
-	 */
-	// public Hotel(String razaoSocial, int classificacao, Double
-	// precoRegularSemana, Double precoRegularFds,
-	// Double precoVipSemana, Double precoVipFds) {
-	// this.razaoSocial = razaoSocial;
-	// this.classificacao = classificacao;
-	// preco = new PrecoHotel(precoRegularSemana, precoRegularFds,
-	// precoVipSemana, precoVipFds);
-	// }
-
 	public String getNome() {
 		return nome;
 	}

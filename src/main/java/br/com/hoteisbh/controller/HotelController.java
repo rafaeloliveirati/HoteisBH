@@ -1,7 +1,9 @@
 package br.com.hoteisbh.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.hoteisbh.model.DiariaReserva;
 import br.com.hoteisbh.model.Hotel;
@@ -12,8 +14,9 @@ import br.com.hoteisbh.util.Utils;
 public class HotelController {
 
 	public static String verificaMelhorHotel(Reserva reserva, List<Hotel> hoteis) {
+		Map<Hotel, Reserva> mapaHotelReservas = new HashMap<Hotel, Reserva>();
 		for (Hotel hotel : hoteis) {
-			getValoresReserva(reserva, hotel);
+			mapaHotelReservas.put(hotel, getValoresReserva(reserva, hotel));
 		}
 		return null;
 	}
@@ -33,7 +36,7 @@ public class HotelController {
 			} else {
 				return hotel.getPreco().getPrecoRegularFds();
 			}
-		} else if (tipoHospede == TipoHospede.HOSPEDE_REGULAR) {
+		} else if (tipoHospede == TipoHospede.HOSPEDE_VIP) {
 			if (Utils.isDiaSemana(data)) {
 				return hotel.getPreco().getPrecoVipSemana();
 
