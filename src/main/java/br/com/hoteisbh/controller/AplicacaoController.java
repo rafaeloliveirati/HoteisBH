@@ -1,10 +1,12 @@
 package br.com.hoteisbh.controller;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Optional;
 
 import br.com.hoteisbh.model.ReservaHotel;
 import br.com.hoteisbh.model.TipoHospede;
+import br.com.hoteisbh.util.ConstantesString;
 import br.com.hoteisbh.util.Utils;
 
 /**
@@ -86,16 +88,15 @@ public class AplicacaoController {
 	 */
 	public static String getTextoArquivo(String localFile) {
 		try {
-			String srtFile = localFile;
-			FileReader inputFile = new FileReader(srtFile);
-			BufferedReader bufferReader = new BufferedReader(inputFile);
-			String line;
-			while ((line = bufferReader.readLine()) != null) {
-				if (isEntradaValida(line)) {
-					return line.trim();
-				}
+			Optional<String> tipoReserva = Files.lines(Paths.get(localFile))
+					.filter(s -> s.contains(ConstantesString.REGULAR) || s.contains(ConstantesString.VIP)).findFirst();
+			/*
+			 * Verifica se o arquivo possui o texto de algum dos tipos de
+			 * reserva
+			 */
+			if (tipoReserva.isPresent()) {
+				return tipoReserva.get();
 			}
-			bufferReader.close();
 		} catch (Exception e) {
 			System.out.println("Erro ao processar o arquivo");
 		}
