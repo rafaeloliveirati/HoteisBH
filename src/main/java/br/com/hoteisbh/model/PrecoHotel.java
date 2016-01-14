@@ -1,10 +1,10 @@
 package br.com.hoteisbh.model;
 
 public class PrecoHotel {
-	private float precoRegularSemana;
-	private float precoRegularFds;
-	private float precoVipSemana;
-	private float precoVipFds;
+	private double precoRegularSemana;
+	private double precoRegularFds;
+	private double precoVipSemana;
+	private double precoVipFds;
 
 	/**
 	 * Construtor utilizado para receber os valos dos precos da reserva
@@ -14,42 +14,42 @@ public class PrecoHotel {
 	 * @param precoVipSemana
 	 * @param precoVipFds
 	 */
-	public PrecoHotel(float precoRegularSemana, float precoRegularFds, float precoVipSemana, float precoVipFds) {
+	public PrecoHotel(double precoRegularSemana, double precoRegularFds, double precoVipSemana, double precoVipFds) {
 		this.precoRegularSemana = precoRegularSemana;
 		this.precoRegularFds = precoRegularFds;
 		this.precoVipSemana = precoVipSemana;
 		this.precoVipFds = precoVipFds;
 	}
 
-	public float getPrecoRegularSemana() {
+	public double getPrecoRegularSemana() {
 		return precoRegularSemana;
 	}
 
-	public void setPrecoRegularSemana(float precoRegularSemana) {
+	public void setPrecoRegularSemana(double precoRegularSemana) {
 		this.precoRegularSemana = precoRegularSemana;
 	}
 
-	public float getPrecoRegularFds() {
+	public double getPrecoRegularFds() {
 		return precoRegularFds;
 	}
 
-	public void setPrecoRegularFds(float precoRegularFds) {
+	public void setPrecoRegularFds(double precoRegularFds) {
 		this.precoRegularFds = precoRegularFds;
 	}
 
-	public float getPrecoVipSemana() {
+	public double getPrecoVipSemana() {
 		return precoVipSemana;
 	}
 
-	public void setPrecoVipSemana(float precoVipSemana) {
+	public void setPrecoVipSemana(double precoVipSemana) {
 		this.precoVipSemana = precoVipSemana;
 	}
 
-	public float getPrecoVipFds() {
+	public double getPrecoVipFds() {
 		return precoVipFds;
 	}
 
-	public void setPrecoVipFds(float precoVipFds) {
+	public void setPrecoVipFds(double precoVipFds) {
 		this.precoVipFds = precoVipFds;
 	}
 }

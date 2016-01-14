@@ -5,9 +5,11 @@ import java.util.List;
 import org.junit.Test;
 
 import br.com.hoteisbh.builder.PlazaBuilder;
+import br.com.hoteisbh.builder.RoyalBuilder;
 import br.com.hoteisbh.model.Hotel;
-import br.com.hoteisbh.model.PrecoHotel;
 import br.com.hoteisbh.model.Reserva;
+import br.com.hoteisbh.model.TipoHospede;
+import br.com.hoteisbh.util.Utils;
 import junit.framework.TestCase;
 
 /**
@@ -18,43 +20,43 @@ import junit.framework.TestCase;
  *
  */
 public class TestHotelController extends TestCase {
+
 	/**
 	 * Teste efetuado no metodo testVerificaMelhorHotel, onde passar algumas
 	 * entradas e verifica se o retorno do melhor hotel esta correto
 	 */
 	@Test
-	public void testVerificaMelhorHotel() {
-		// String entrada1 = "Regular: 16Mar2015(seg), 17Mar2015(ter),
-		// 18Mar2015(qua)";
-		String entrada2 = "Regular: 20Mar2015(sex), 21Mar2015(sab), 22Mar2015(dom)";
-		// String entrada3 = "Regular: 16Mar2015(seg), 17Mar2015(ter),
-		// 18Mar2015(qua)";
-		List<Hotel> hotel = HotelController.buildListaHoteis();
-		// Reserva reserva1 = ReservaController.builderReserva(entrada1);
+	public void testGetMelhorHotel() {
+		String entrada1 = "Regular: 16Mar2015(seg), 17Mar2015(ter),18Mar2015(qua)";
+		String entrada2 = "Regular: 20Mar2015(sex), 21Mar2015(sab),22Mar2015(dom)";
+		String entrada3 = "Vip: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab";
+		List<Hotel> hoteis = HotelController.buildListaHoteis();
+		Reserva reserva1 = ReservaController.builderReserva(entrada1);
 		Reserva reserva2 = ReservaController.builderReserva(entrada2);
-		// Reserva reserva3 = ReservaController.builderReserva(entrada3);
-		// String retornoEsperado1 = "The Carlyle: R$330";
+		Reserva reserva3 = ReservaController.builderReserva(entrada3);
+		String retornoEsperado1 = "The Carlyle: R$330";
 		String retornoEsperado2 = "The Plaza: R$280";
-		// String retornoEsperado3 = "Royal Hotel: R$240";
-		// assertEquals(retornoEsperado1,
-		// HotelController.verificaMelhorHotel(reserva1, hotel));
-		assertEquals(retornoEsperado2, HotelController.verificaMelhorHotel(reserva2, hotel));
-		// assertEquals(retornoEsperado3,
-		// HotelController.verificaMelhorHotel(reserva3, hotel));
+		String retornoEsperado3 = "Royal Hotel: R$240";
+		assertEquals(retornoEsperado1,
+				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva1, hoteis)));
+		assertEquals(retornoEsperado2,
+				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva2, hoteis)));
+		assertEquals(retornoEsperado3,
+				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva3, hoteis)));
 	}
 
 	@Test
-	public void testBuildHotel() {
-		Hotel hotelEsperado = new Hotel();
-		hotelEsperado.setNome("The Plaza");
-		hotelEsperado.setClassificacao(4);
-		hotelEsperado.setPreco(new PrecoHotel(160, 110, 60, 50));
-		Hotel hotelRetorno = HotelController.buildHotel(new PlazaBuilder());
-		assertEquals(hotelEsperado, hotelRetorno);
+	public void testGetValorDiaria() {
+		Hotel hotel1 = HotelController.buildHotel(new PlazaBuilder());
+		Hotel hotel2 = HotelController.buildHotel(new RoyalBuilder());
+		TipoHospede tipoHospede1 = TipoHospede.HOSPEDE_REGULAR;
+		TipoHospede tipoHospede2 = TipoHospede.HOSPEDE_VIP;
+		double retornoEsperado = 160;
+		double retornoEsperado2 = 100;
+		String strData = "01Jan2016";
+		String strData2 = "13Jan2016";
+		assertEquals(retornoEsperado, HotelController.getValorDiaria(Utils.formataData(strData), hotel1, tipoHospede1));
+		assertEquals(retornoEsperado2,
+				HotelController.getValorDiaria(Utils.formataData(strData2), hotel2, tipoHospede2));
 	}
-
-	@Test
-	public void testBuildListaHoteis() {
-	}
-
 }

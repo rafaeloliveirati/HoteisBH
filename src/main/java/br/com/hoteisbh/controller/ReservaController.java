@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.hoteisbh.model.DiariaReserva;
+import br.com.hoteisbh.model.Hotel;
 import br.com.hoteisbh.model.Reserva;
 import br.com.hoteisbh.model.TipoHospede;
 import br.com.hoteisbh.util.Utils;
@@ -22,7 +23,7 @@ public class ReservaController {
 	 * @param entrada
 	 */
 	public static Reserva builderReserva(String entrada) {
-		String[] parametros = formataEntrada(entrada.trim());
+		String[] parametros = AplicacaoController.formataEntrada(entrada.trim());
 		/*
 		 * Cria um array com o tamanho da quantidade de parametros, com exceção
 		 * do primeiro parametro(TipoParametro)
@@ -36,16 +37,40 @@ public class ReservaController {
 	}
 
 	/**
-	 * Metodo que recebe o valor um valor de entrada e quebra em varios
-	 * parametros
+	 * Metodo que recebe uma reserva e retorna o valor de todas as diarias
 	 * 
-	 * @param entrada
+	 * @param reserva
 	 * @return
 	 */
-	private static String[] formataEntrada(String entrada) {
+	public static double getValorTotal(Reserva reserva) {
+		double valor = 0;
 		/*
-		 * Retorna a entrada formatada de acordo com os separadores : || ,
+		 * Percorre a lista de diarias e incrementa o valor das mesmas no double
 		 */
-		return entrada.split("\\,|\\:");
+		for (DiariaReserva diaria : reserva.getDiarias()) {
+			valor += diaria.getValor();
+		}
+		return valor;
+	}
+
+	/**
+	 * Metodo que retorna a reserva copulada com seus valores de acordo com o
+	 * tipo do hospede, hotel e dia da semana
+	 * 
+	 * @param reserva
+	 * @param hotel
+	 * @return
+	 */
+	public static Reserva getValoresReserva(Reserva reserva, Hotel hotel) {
+		Reserva resultReserva = reserva;
+		// Percorre a lista de reservas
+		for (DiariaReserva diaria : resultReserva.getDiarias()) {
+			/*
+			 * Seta o valor da diaria de acordo com o retrono do metodo
+			 * getValorDiaria
+			 */
+			diaria.setValor(HotelController.getValorDiaria(diaria.getData(), hotel, resultReserva.getTipo()));
+		}
+		return resultReserva;
 	}
 }

@@ -12,7 +12,7 @@ public class RoyalBuilder extends HotelBuilder {
 
 	@Override
 	public void buildNome() {
-		hotel.setNome("The Royal");
+		hotel.setNome("Royal Hotel");
 	}
 
 	@Override
@@ -22,6 +22,6 @@ public class RoyalBuilder extends HotelBuilder {
 
 	@Override
 	public void buildPreco() {
-		hotel.setPreco(new PrecoHotel(220, 110, 60, 50));
+		hotel.setPreco(new PrecoHotel(220, 150, 100, 40));
 	}
 }

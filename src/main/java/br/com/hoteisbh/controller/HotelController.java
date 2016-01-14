@@ -9,9 +9,9 @@ import br.com.hoteisbh.builder.HotelBuilder;
 import br.com.hoteisbh.builder.MakeHotel;
 import br.com.hoteisbh.builder.PlazaBuilder;
 import br.com.hoteisbh.builder.RoyalBuilder;
-import br.com.hoteisbh.model.DiariaReserva;
 import br.com.hoteisbh.model.Hotel;
 import br.com.hoteisbh.model.Reserva;
+import br.com.hoteisbh.model.ReservaHotel;
 import br.com.hoteisbh.model.TipoHospede;
 import br.com.hoteisbh.util.Utils;
 
@@ -31,100 +31,54 @@ public class HotelController {
 	 * @param hoteis
 	 * @return
 	 */
-	public static String verificaMelhorHotel(Reserva reserva, List<Hotel> hoteis) {
+	public static ReservaHotel getMelhorHotel(Reserva reserva, List<Hotel> hoteis) {
 		/*
 		 * Cria uma instancia de hotel que ira representar o Hotel com o melhor
 		 * preco
 		 */
-		Hotel melhorHotel = null;
+		// Hotel melhorHotel = null;
 		/*
 		 * Cria um valor utilizado para buscar o menor valor total da reserva
 		 */
-		float valorMelhorHotel = 0;
+		// double valorMelhorHotel = 0;
+		ReservaHotel reservaHotel = null;
 		// Percorre a lista de hoteis
 		for (Hotel hotel : hoteis) {
 			/*
 			 * Aciona o getValorTotal para buscar o valor total da reserva de
 			 * acordo com as datas de reserva e os valores de cada hotel
 			 */
-			float valorReserva = getValorTotal(getValoresReserva(reserva, hotel));
+			double valorReserva = ReservaController.getValorTotal(ReservaController.getValoresReserva(reserva, hotel));
 			/*
 			 * Verifica se o hotel esta nulo, caso seja verdadeiro então está
 			 * passando pela primeira ocorrencia do laço e assim seta o
 			 * melhorHotel e o melhor valor para os valores atuais
 			 */
-			if (melhorHotel == null) {
-				melhorHotel = hotel;
-				valorMelhorHotel = valorReserva;
+			if (reservaHotel == null) {
+				reservaHotel = new ReservaHotel(hotel, valorReserva);
 			}
 			/*
 			 * Verifica se o valorTotal de acordo com a reserva é menor ou igual
 			 * ao valorMelhor(Valor atual)
 			 */
-			else if (valorReserva < valorMelhorHotel) {
+			else if (valorReserva < reservaHotel.getValor()) {
 				// Caso o valor seja menor então seta os valores atuais
-				melhorHotel = hotel;
-				valorMelhorHotel = valorReserva;
+				reservaHotel.setHotel(hotel);
+				reservaHotel.setValor(valorReserva);
 			}
 			/*
 			 * Verifica se os valores são iguais, caso seja verdadeiro então irá
 			 * validar a classificacao do hotel
 			 */
-			else if (valorReserva == valorMelhorHotel) {
+			else if (valorReserva == reservaHotel.getValor()) {
 				// Verifica se o hotel atual possui maior classificação
-				if (melhorHotel.getClassificacao() > hotel.getClassificacao()) {
-					melhorHotel = hotel;
-					valorMelhorHotel = valorReserva;
+				if (reservaHotel.getHotel().getClassificacao() < hotel.getClassificacao()) {
+					reservaHotel.setHotel(hotel);
+					reservaHotel.setValor(valorReserva);
 				}
 			}
 		}
-		/*
-		 * Tratei esta excessão pois tento converter para inteiro caso seja
-		 * possivel, se não for possivel então retorna o proprio float
-		 */
-		try {
-			return melhorHotel.getNome() + ": R$" + (int) valorMelhorHotel;
-		} catch (Exception e) {
-			return melhorHotel.getNome() + ": R$" + valorMelhorHotel;
-		}
-	}
-
-	/**
-	 * Metodo que recebe uma reserva e retorna o valor de todas as diarias
-	 * 
-	 * @param reserva
-	 * @return
-	 */
-	private static float getValorTotal(Reserva reserva) {
-		float valor = 0;
-		/*
-		 * Percorre a lista de diarias e incrementa o valor das mesmas no float
-		 */
-		for (DiariaReserva diaria : reserva.getDiarias()) {
-			valor += diaria.getValor();
-		}
-		return valor;
-	}
-
-	/**
-	 * Metodo que retorna a reserva copulada com seus valores de acordo com o
-	 * tipo do hospede, hotel e dia da semana
-	 * 
-	 * @param reserva
-	 * @param hotel
-	 * @return
-	 */
-	private static Reserva getValoresReserva(Reserva reserva, Hotel hotel) {
-		Reserva resultReserva = reserva;
-		// Percorre a lista de reservas
-		for (DiariaReserva diaria : resultReserva.getDiarias()) {
-			/*
-			 * Seta o valor da diaria de acordo com o retrono do metodo
-			 * getValorDiaria
-			 */
-			diaria.setValor(getValorDiaria(diaria.getData(), hotel, resultReserva.getTipo()));
-		}
-		return resultReserva;
+		return reservaHotel;
 	}
 
 	/**
@@ -136,7 +90,7 @@ public class HotelController {
 	 * @param tipoHospede
 	 * @return
 	 */
-	private static float getValorDiaria(Date data, Hotel hotel, TipoHospede tipoHospede) {
+	public static double getValorDiaria(Date data, Hotel hotel, TipoHospede tipoHospede) {
 		/*
 		 * Verifica o tipo do hospede, para cada hospede será considerado um
 		 * preço diferente

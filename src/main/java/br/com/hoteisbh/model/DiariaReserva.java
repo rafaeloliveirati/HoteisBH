@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class DiariaReserva {
 	private Date data;
-	private float valor;
+	private double valor;
 
 	public DiariaReserva(Date diaria) {
 		data = diaria;
@@ -18,11 +18,11 @@ public class DiariaReserva {
 		this.data = datas;
 	}
 
-	public float getValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(float valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 }
