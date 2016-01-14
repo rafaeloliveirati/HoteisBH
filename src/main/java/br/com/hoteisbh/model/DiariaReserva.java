@@ -1,20 +1,20 @@
 package br.com.hoteisbh.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DiariaReserva {
-	private Date data;
+	private LocalDate data;
 	private double valor;
 
-	public DiariaReserva(Date diaria) {
-		data = diaria;
+	public DiariaReserva(LocalDate localDate) {
+		data = localDate;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date datas) {
+	public void setData(LocalDate datas) {
 		this.data = datas;
 	}
 

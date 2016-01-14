@@ -65,11 +65,17 @@ public class AplicacaoController {
 		/*
 		 * Retorna a entrada formatada de acordo com os separadores : || ,
 		 */
-		String[] split = entrada.split("\\,|\\:");
-		for (int i = 0; i < split.length; i++) {
-			split[i] = split[i].replaceAll(" ", "");
+		try {
+
+			String[] split = entrada.split("\\,|\\:");
+			for (int i = 0; i < split.length; i++) {
+				split[i] = split[i].replaceAll(" ", "");
+			}
+			return split;
+		} catch (Exception e) {
+			System.out.println("Entrada de dados Invalida");
+			return null;
 		}
-		return split;
 	}
 
 	/**
@@ -80,7 +86,6 @@ public class AplicacaoController {
 	 */
 	public static String getTextoArquivo(String localFile) {
 		try {
-			// c:\\file.txt
 			String srtFile = localFile;
 			FileReader inputFile = new FileReader(srtFile);
 			BufferedReader bufferReader = new BufferedReader(inputFile);
@@ -92,7 +97,7 @@ public class AplicacaoController {
 			}
 			bufferReader.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao processar o arquivo");
 		}
 		return null;
 	}

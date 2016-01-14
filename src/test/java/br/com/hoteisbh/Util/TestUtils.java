@@ -1,8 +1,7 @@
 package br.com.hoteisbh.Util;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.junit.Test;
 
@@ -14,18 +13,18 @@ public class TestUtils extends TestCase {
 	@Test
 	public void testFormataData() throws ParseException {
 		String entrada = "01Jan2016";
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		Date dataEsperada = sdf.parse("01-01-2016");
+		LocalDate dataEsperada = LocalDate.of(2016, 01, 01);
 		assertEquals(dataEsperada, Utils.formataData(entrada));
 	}
 
 	@Test
-	public void testIsDiaSemana() throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		Date dataTrue = sdf.parse("01-01-2016");
-		Date dataFalse = sdf.parse("16-01-2016");
-		assertTrue(Utils.isDiaSemana(dataTrue));
-		assertFalse(Utils.isDiaSemana(dataFalse));
+	public void testIsDiaSemanaTrue() throws ParseException {
+		assertTrue(Utils.isDiaSemana(LocalDate.of(2016, 01, 01).getDayOfWeek()));
+	}
+
+	@Test
+	public void testIsDiaSemanaFalse() throws ParseException {
+		assertFalse(Utils.isDiaSemana(LocalDate.of(2016, 01, 16).getDayOfWeek()));
 	}
 
 	@Test

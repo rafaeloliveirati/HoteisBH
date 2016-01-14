@@ -25,8 +25,8 @@ public class ReservaController {
 	 */
 	public static Reserva builderReserva(String[] parametros) {
 		/*
-		 * Cria um array com o tamanho da quantidade de parametros, com
-		 * exceção do primeiro parametro(TipoParametro)
+		 * Cria um array com o tamanho da quantidade de parametros, com excecao
+		 * do primeiro parametro(TipoParametro)
 		 */
 		String strTipoHostpede = parametros[0];
 		List<DiariaReserva> listDiarias = new ArrayList<>();

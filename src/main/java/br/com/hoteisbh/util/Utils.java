@@ -1,10 +1,9 @@
 package br.com.hoteisbh.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Utils {
 	/**
@@ -14,38 +13,36 @@ public class Utils {
 	 * @param data
 	 * @return
 	 */
-	public static Date formataData(String data) {
+	public static LocalDate formataData(String input) {
 		try {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMMyyyy");
-			Date date = dateFormat.parse(data.trim());
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-			return sdf.parse(sdf.format(date));
-		} catch (ParseException e) {
-			e.printStackTrace();
+			String data = input.substring(0, 9);
+			LocalDate localDate = LocalDate.parse(data,
+					DateTimeFormatter.ofPattern("ddMMMyyyy").withLocale(Locale.ENGLISH));
+			return localDate;
+		} catch (Exception e) {
+			System.out.println("Falha ao formatar a data");
+			return null;
 		}
-		return null;
 	}
 
 	/**
-	 * Metodo que recebe uma data e retorna se a mesma é um dia da semana ou não
+	 * Metodo que recebe uma data e retorna se a mesma é um dia da semana ou
+	 * não
 	 * 
-	 * @param data
+	 * @param diaSemana
 	 * @return
 	 */
-	public static boolean isDiaSemana(Date data) {
-		Calendar c = new GregorianCalendar();
-		c.setTime(data);
-		int dia = c.get(Calendar.DAY_OF_WEEK);
-		if (dia == Calendar.SUNDAY || dia == Calendar.SATURDAY) {
+	public static boolean isDiaSemana(DayOfWeek diaSemana) {
+		if (diaSemana == DayOfWeek.SUNDAY || diaSemana == DayOfWeek.SATURDAY) {
 			return false;
 		}
 		return true;
 	}
 
 	/**
-	 * Metodo para formatar o valor de acordo com a saida.Tratei esta excessÃ£o
-	 * pois tento converter para inteiro caso seja possivel, se nÃ£o for
-	 * possivel entÃ£o retorna o proprio double
+	 * Metodo para formatar o valor de acordo com a saida.Tratei esta
+	 * excessÃ£o pois tento converter para inteiro caso seja possivel, se
+	 * nÃ£o for possivel entÃ£o retorna o proprio double
 	 * 
 	 * @param valor
 	 * @return String

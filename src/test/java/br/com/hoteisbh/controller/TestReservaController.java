@@ -11,7 +11,7 @@ public class TestReservaController extends TestCase {
 	@Test
 	public void testGetValorTotal() {
 		Reserva reserva = ReservaController.builderReserva(
-				AplicacaoController.formataEntrada("Vip: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab"));
+				AplicacaoController.formataEntrada("Vip: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab)"));
 		reserva = ReservaController.getValoresReserva(reserva, HotelController.buildHotel(new RoyalBuilder()));
 		double valorEsperado = 240;
 		assertEquals(valorEsperado, ReservaController.getValorTotal(reserva));

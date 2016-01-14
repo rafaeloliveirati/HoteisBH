@@ -1,7 +1,7 @@
 package br.com.hoteisbh.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.com.hoteisbh.builder.CarlyleBuilder;
@@ -33,14 +33,8 @@ public class HotelController {
 	 */
 	public static ReservaHotel getMelhorHotel(Reserva reserva, List<Hotel> hoteis) {
 		/*
-		 * Cria uma instancia de hotel que ira representar o Hotel com o melhor
-		 * preco
-		 */
-		// Hotel melhorHotel = null;
-		/*
 		 * Cria um valor utilizado para buscar o menor valor total da reserva
 		 */
-		// double valorMelhorHotel = 0;
 		ReservaHotel reservaHotel = null;
 		// Percorre a lista de hoteis
 		for (Hotel hotel : hoteis) {
@@ -67,8 +61,8 @@ public class HotelController {
 				reservaHotel.setValor(valorReserva);
 			}
 			/*
-			 * Verifica se os valores são iguais, caso seja verdadeiro então
-			 * irá validar a classificacao do hotel
+			 * Verifica se os valores são iguais, caso seja verdadeiro entao
+			 * ira� validar a classificacao do hotel
 			 */
 			else if (valorReserva == reservaHotel.getValor()) {
 				// Verifica se o hotel atual possui maior classificação
@@ -85,12 +79,12 @@ public class HotelController {
 	 * Metodo responsavel por retornar o valor da diaria de acordo com o
 	 * hospede, hotel e dia da semana
 	 * 
-	 * @param data
+	 * @param localDate
 	 * @param hotel
 	 * @param tipoHospede
 	 * @return
 	 */
-	public static double getValorDiaria(Date data, Hotel hotel, TipoHospede tipoHospede) {
+	public static double getValorDiaria(LocalDate localDate, Hotel hotel, TipoHospede tipoHospede) {
 		/*
 		 * Verifica o tipo do hospede, para cada hospede será considerado um
 		 * preço diferente
@@ -100,14 +94,14 @@ public class HotelController {
 			 * Aciona o metodo util.isDiaSemana para verificar se a data da
 			 * reserva é um dia da semana ou não
 			 */
-			if (Utils.isDiaSemana(data)) {
+			if (Utils.isDiaSemana(localDate.getDayOfWeek())) {
 				return hotel.getPreco().getPrecoRegularSemana();
 
 			} else {
 				return hotel.getPreco().getPrecoRegularFds();
 			}
 		} else if (tipoHospede == TipoHospede.HOSPEDE_VIP) {
-			if (Utils.isDiaSemana(data)) {
+			if (Utils.isDiaSemana(localDate.getDayOfWeek())) {
 				return hotel.getPreco().getPrecoVipSemana();
 
 			} else {
