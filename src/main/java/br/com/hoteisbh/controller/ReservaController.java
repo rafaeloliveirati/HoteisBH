@@ -20,10 +20,9 @@ public class ReservaController {
 	 * Metodo que recebe uma entrada de texto referente aos parametros de
 	 * entrada da reserva de hotel. (Exemplo: TipoHospede, data01, data02 ...)
 	 * 
-	 * @param entrada
+	 * @param entradaFormatada
 	 */
-	public static Reserva builderReserva(String entrada) {
-		String[] parametros = AplicacaoController.formataEntrada(entrada.trim());
+	public static Reserva builderReserva(String[] parametros) {
 		/*
 		 * Cria um array com o tamanho da quantidade de parametros, com exceção
 		 * do primeiro parametro(TipoParametro)

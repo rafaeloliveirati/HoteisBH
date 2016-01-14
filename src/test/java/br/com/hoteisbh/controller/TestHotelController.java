@@ -31,9 +31,9 @@ public class TestHotelController extends TestCase {
 		String entrada2 = "Regular: 20Mar2015(sex), 21Mar2015(sab),22Mar2015(dom)";
 		String entrada3 = "Vip: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab";
 		List<Hotel> hoteis = HotelController.buildListaHoteis();
-		Reserva reserva1 = ReservaController.builderReserva(entrada1);
-		Reserva reserva2 = ReservaController.builderReserva(entrada2);
-		Reserva reserva3 = ReservaController.builderReserva(entrada3);
+		Reserva reserva1 = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada1));
+		Reserva reserva2 = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada2));
+		Reserva reserva3 = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada3));
 		String retornoEsperado1 = "The Carlyle: R$330";
 		String retornoEsperado2 = "The Plaza: R$280";
 		String retornoEsperado3 = "Royal Hotel: R$240";

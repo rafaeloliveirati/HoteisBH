@@ -53,9 +53,9 @@ public class Aplicacao {
 		 * dados serão repassados ao metodo builder reserva para geracao da
 		 * reserva apartir dos mesmos
 		 */
-		Reserva reserva = ReservaController.builderReserva(entrada);
+		Reserva reserva = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada.trim()));
 		// Printa no terminal o hotel com o melhor preco
-		System.out
-				.println(AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva, hoteis)));
+		System.out.println(
+				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva, hoteis)));
 	}
 }
