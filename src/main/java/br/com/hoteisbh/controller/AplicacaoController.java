@@ -72,6 +72,12 @@ public class AplicacaoController {
 		return split;
 	}
 
+	/**
+	 * Metodo responsavel por buscar o texto de um arquivo
+	 * 
+	 * @param localFile
+	 * @return
+	 */
 	public static String getTextoArquivo(String localFile) {
 		try {
 			// c:\\file.txt
