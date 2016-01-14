@@ -58,8 +58,8 @@ public class HotelController {
 				reservaHotel = new ReservaHotel(hotel, valorReserva);
 			}
 			/*
-			 * Verifica se o valorTotal de acordo com a reserva é menor ou igual
-			 * ao valorMelhor(Valor atual)
+			 * Verifica se o valorTotal de acordo com a reserva é menor ou
+			 * igual ao valorMelhor(Valor atual)
 			 */
 			else if (valorReserva < reservaHotel.getValor()) {
 				// Caso o valor seja menor então seta os valores atuais
@@ -67,8 +67,8 @@ public class HotelController {
 				reservaHotel.setValor(valorReserva);
 			}
 			/*
-			 * Verifica se os valores são iguais, caso seja verdadeiro então irá
-			 * validar a classificacao do hotel
+			 * Verifica se os valores são iguais, caso seja verdadeiro então
+			 * irá validar a classificacao do hotel
 			 */
 			else if (valorReserva == reservaHotel.getValor()) {
 				// Verifica se o hotel atual possui maior classificação

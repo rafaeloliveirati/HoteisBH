@@ -27,36 +27,39 @@ public class TestHotelController extends TestCase {
 	 */
 	@Test
 	public void testGetMelhorHotel() {
-		String entrada1 = "Regular: 16Mar2015(seg), 17Mar2015(ter),18Mar2015(qua)";
-		String entrada2 = "Regular: 20Mar2015(sex), 21Mar2015(sab),22Mar2015(dom)";
-		String entrada3 = "Vip: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab";
+		String entrada = "Regular: 16Mar2015(seg), 17Mar2015(ter),18Mar2015(qua)";
 		List<Hotel> hoteis = HotelController.buildListaHoteis();
-		Reserva reserva1 = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada1));
-		Reserva reserva2 = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada2));
-		Reserva reserva3 = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada3));
-		String retornoEsperado1 = "The Carlyle: R$330";
-		String retornoEsperado2 = "The Plaza: R$280";
-		String retornoEsperado3 = "Royal Hotel: R$240";
-		assertEquals(retornoEsperado1,
-				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva1, hoteis)));
-		assertEquals(retornoEsperado2,
-				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva2, hoteis)));
-		assertEquals(retornoEsperado3,
-				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva3, hoteis)));
+		Reserva reserva = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada));
+		String retornoEsperado = "The Carlyle: R$330";
+		assertEquals(retornoEsperado,
+				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva, hoteis)));
 	}
 
 	@Test
-	public void testGetValorDiaria() {
-		Hotel hotel1 = HotelController.buildHotel(new PlazaBuilder());
-		Hotel hotel2 = HotelController.buildHotel(new RoyalBuilder());
-		TipoHospede tipoHospede1 = TipoHospede.HOSPEDE_REGULAR;
-		TipoHospede tipoHospede2 = TipoHospede.HOSPEDE_VIP;
+	public void testGetMelhorHotelVip() {
+		String entrada = "Vip: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab";
+		List<Hotel> hoteis = HotelController.buildListaHoteis();
+		Reserva reserva = ReservaController.builderReserva(AplicacaoController.formataEntrada(entrada));
+		String retornoEsperado = "Royal Hotel: R$240";
+		assertEquals(retornoEsperado,
+				AplicacaoController.formataStringPrintTerminal(HotelController.getMelhorHotel(reserva, hoteis)));
+	}
+
+	@Test
+	public void testGetValorDiariaRegular() {
+		Hotel hotel = HotelController.buildHotel(new PlazaBuilder());
+		TipoHospede tipoHospede = TipoHospede.HOSPEDE_REGULAR;
 		double retornoEsperado = 160;
-		double retornoEsperado2 = 100;
 		String strData = "01Jan2016";
-		String strData2 = "13Jan2016";
-		assertEquals(retornoEsperado, HotelController.getValorDiaria(Utils.formataData(strData), hotel1, tipoHospede1));
-		assertEquals(retornoEsperado2,
-				HotelController.getValorDiaria(Utils.formataData(strData2), hotel2, tipoHospede2));
+		assertEquals(retornoEsperado, HotelController.getValorDiaria(Utils.formataData(strData), hotel, tipoHospede));
+	}
+
+	@Test
+	public void testGetValorDiariaVip() {
+		Hotel hotel = HotelController.buildHotel(new RoyalBuilder());
+		TipoHospede tipoHospede = TipoHospede.HOSPEDE_VIP;
+		double retornoEsperado = 100;
+		String strData = "13Jan2016";
+		assertEquals(retornoEsperado, HotelController.getValorDiaria(Utils.formataData(strData), hotel, tipoHospede));
 	}
 }

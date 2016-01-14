@@ -10,7 +10,8 @@ import br.com.hoteisbh.model.TipoHospede;
 import br.com.hoteisbh.util.Utils;
 
 /**
- * Classe controladora utilizado para gerenciar as ações vinculadas as reservas
+ * Classe controladora utilizado para gerenciar as ações vinculadas as
+ * reservas
  * 
  * @author Rafael
  *
@@ -24,8 +25,8 @@ public class ReservaController {
 	 */
 	public static Reserva builderReserva(String[] parametros) {
 		/*
-		 * Cria um array com o tamanho da quantidade de parametros, com exceção
-		 * do primeiro parametro(TipoParametro)
+		 * Cria um array com o tamanho da quantidade de parametros, com
+		 * exceção do primeiro parametro(TipoParametro)
 		 */
 		String strTipoHostpede = parametros[0];
 		List<DiariaReserva> listDiarias = new ArrayList<>();
@@ -46,9 +47,7 @@ public class ReservaController {
 		/*
 		 * Percorre a lista de diarias e incrementa o valor das mesmas no double
 		 */
-		for (DiariaReserva diaria : reserva.getDiarias()) {
-			valor += diaria.getValor();
-		}
+		valor = reserva.getDiarias().stream().mapToDouble(diaria -> diaria.getValor()).sum();
 		return valor;
 	}
 

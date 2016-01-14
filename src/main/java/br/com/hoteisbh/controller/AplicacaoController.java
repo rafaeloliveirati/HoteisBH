@@ -1,5 +1,8 @@
 package br.com.hoteisbh.controller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 import br.com.hoteisbh.model.ReservaHotel;
 import br.com.hoteisbh.model.TipoHospede;
 import br.com.hoteisbh.util.Utils;
@@ -66,7 +69,25 @@ public class AplicacaoController {
 		for (int i = 0; i < split.length; i++) {
 			split[i] = split[i].replaceAll(" ", "");
 		}
-		System.out.println(split[1]);
 		return split;
+	}
+
+	public static String getTextoArquivo(String localFile) {
+		try {
+			// c:\\file.txt
+			String srtFile = localFile;
+			FileReader inputFile = new FileReader(srtFile);
+			BufferedReader bufferReader = new BufferedReader(inputFile);
+			String line;
+			while ((line = bufferReader.readLine()) != null) {
+				if (isEntradaValida(line)) {
+					return line.trim();
+				}
+			}
+			bufferReader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
