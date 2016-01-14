@@ -1,11 +1,2 @@
 /target/
-/.settings/
-/.classpath
-/.project
-*.err
-*.log
-*.hprof
-/pidList
-/logs/
-/.lock
-/bin/
+
